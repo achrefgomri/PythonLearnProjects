@@ -1,8 +1,9 @@
 import random
-print("Bonjour joueur et bienvenue au Zcasino! ton solde initial est de 500$")
-solde=int(500)
-montant=''
-numero_mise=''
+from os import system, name 
+#print("Bonjour joueur et bienvenue au Zcasino! ton solde initial est de 500$")
+#solde=int(500)
+#montant=''
+#numero_mise=''
 i=0
 while(True):
     i+=1
@@ -35,3 +36,19 @@ while(True):
         print ("dommage que vous avez rien gagné, le numéro gagnant est le {}, solde restant est de {} en revenche vous pouvez toujours reesseyer".format(numGagnant,solde))
     print("Votre solde est de {}$, q pour quiter".format(solde))
 print("au revoir et à trés bientôt")        
+
+def initialiser():
+    print("Bonjour joueur et bienvenue au Zcasino! ton solde initial est de 500$")
+    solde=int(500)
+    montant=''
+    numero_mise=''
+def transformer():
+    def clear(): 
+  
+    # for windows 
+    if name == 'nt': 
+        _ = system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = system('clear') 
