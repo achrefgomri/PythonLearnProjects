@@ -2,6 +2,7 @@ from donnees import *
 from random import randrange
 import os
 import pickle
+liste_mots=["voiture","travail","joueur","coin","portable","sable","bonbon","ananas","merci","salut","sel","sucre","sabotage","garage","salon","navire","carfour","nid","niche","nez","lait","livre","stylo","laine","mer","moi","maitre","madame"]
 def ScoreJoueur(nom_joueur):
     if os.path.exists('scores'): # Le fichier existe
         with open ('scores','rb') as fichier_scores:
@@ -35,8 +36,18 @@ def affiche(tab,mot_saisi):
         else:
             mot_resultat += '*'
     return mot_resultat
+
+def SauvListeMots ():
+    global liste_mots
+    with open ('donnees','w') as fichier_donnees:
+        fichier_donnees.write(str(liste_mots))
     
 def tour(nom_joueur,score_joueur,x):
+#    global liste_mots
+    with open ('donnees','r') as fichier_donnees:
+        fichier_donnees_list=fichier_donnees.read()
+        liste_mots= fichier_donnees_list.split(',')
+#        print(liste_mots[0])
     try:
         reponse=input("Bonjour monsieur {}, votre dernier score est {},voulez vous commencer une partie ?. (y/N)\n".format(nom_joueur,score_joueur))
         if reponse in ['y','Y']:
@@ -67,7 +78,7 @@ def tour(nom_joueur,score_joueur,x):
                 print("bravo vous l'avez trouvé dès la tentative numero: ",i,"\nvotre score devient donc: ",score_joueur)
                 
             else:
-                print("malheureusement vous avez perdu, votre score reste: ",score_joueur)
+                print("malheureusement vous avez perdu, le mot rechercher est",mot_choisi, "votre score reste: ",score_joueur)
                 
         else:
             x=0
