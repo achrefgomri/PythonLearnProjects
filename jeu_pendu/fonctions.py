@@ -6,8 +6,11 @@ liste_mots=["voiture","travail","joueur","coin","portable","sable","bonbon","ana
 def ScoreJoueur(nom_joueur):
     if os.path.exists('scores'): # Le fichier existe
         with open ('scores','rb') as fichier_scores:
+#            print("fichier score est : ",fichier_scores)
             mon_pickler = pickle.Unpickler(fichier_scores)
+#            print("mon_pickler est : ",mon_pickler)
             liste_joueurs = mon_pickler.load()
+#            print("liste_joueurs est : ",liste_joueurs)
     else:
         liste_joueurs = {}
     if nom_joueur not in liste_joueurs:
