@@ -1,4 +1,4 @@
-from lib import TresorieClass
+from lib import *
 
 
 
