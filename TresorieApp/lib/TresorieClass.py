@@ -1,13 +1,13 @@
 class Caisse:
 	
-	def __init__(self,ID,nom,valeur):
+	def __init__(self,ID=-1,nom='NULL',valeur='NULL'):
 		self.ID=ID
 		self.nom=nom
 		self.valeur=valeur
 	
 class Mouvement:
 	
-	def __init__(self,ID,ID_caisse,nature,valeur,motif,date):
+	def __init__(self,ID=-1,ID_caisse=-1,nature='NULL',valeur='NULL',motif='NULL',date='NULL'):
 		self.ID=ID
 		self.ID_caisse=ID_caisse
 		self.nature=nature
