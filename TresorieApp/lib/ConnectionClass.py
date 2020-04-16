@@ -104,3 +104,35 @@ class ConnectSQL :
                         #Closez la connexion (Close connection).
                         connection.close()
 
+	def __connect__(self):
+        	self.connection = pymysql.connect(host=str(self.host),
+                             user=str(self.user),
+                             password=str(self.password),
+                             db=str(self.db),
+                             charset=str(self.charset),
+                             cursorclass=pymysql.cursors.DictCursor)
+
+        	#self.cur = self.con.cursor()
+		self.cursor = self.connection.cursor(pymysql.cursors.DictCursor)
+		#cursor.execute("SELECT ...")
+
+	def __disconnect__(self):
+		self.connection.close()
+
+	def fetch(self, sql):
+		self.__connect__()
+		self.cursor.execute(sql)
+		result = self.cursor.fetchall()
+		self.__disconnect__()
+		return result
+	
+	def request(self, sql):
+        	self.__connect__()
+        	self.cursor.execute(sql)
+        	self.__disconnect__()
+	
+	def execute(self, sql):
+                self.__connect__()
+                self.cursor.execute(sql)
+		self.connection.commit()
+                self.__disconnect__()
